@@ -9,9 +9,12 @@ import SwiftUI
 import Network
 
 struct CellView: View {
+    @ObservedObject var listData: NewsViewModel
+    
     var data: ArticleListResponseDocsInner
     var isLast: Bool
-    @ObservedObject var listData: NewsViewModel
+
+    var query: String
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -21,7 +24,7 @@ struct CellView: View {
                 Text("").onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         if self.listData.data.count != 50 {
-                            self.listData.fetchData()
+                            self.listData.fetchData(query: query)
                         }
                     }
                 }

@@ -17,16 +17,24 @@ final class NewsViewModel: ObservableObject {
     @Published var count = 1
 
     init() {
-        fetchData()
+        fetchData(query: "title:DNA")
     }
     
-    func fetchData() {
-        ArticlesAPI.everythingGet(count: count, rows: 10, q: "title:DNA") { data, error in
+    func fetchData(query: String) {
+        print("count: \(count)")
+        print("query: \(query)")
+        ArticlesAPI.everythingGet(count: count, rows: 10, q: query) { data, error in
             let oldData = self.data
             self.data = oldData + data!.response.docs
             self.count += 10
-            print(error)
-            print(data)
+            
+            print(error ?? "")
+//            print(data ?? "")
         }
+    }
+    
+    func clearData() {
+        self.data = []
+        self.count = 0
     }
 }
