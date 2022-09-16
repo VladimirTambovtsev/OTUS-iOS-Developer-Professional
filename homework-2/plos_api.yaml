@@ -1,0 +1,87 @@
+openapi: 3.0.3
+info:
+  title: NewsAPI
+  description: NewsAPI.org
+  version: 1.0.0
+servers:
+- url: http://api.plos.org
+tags:
+- name: articles
+  description: News articles
+paths:
+  /search:
+    get:
+      tags:
+      - articles
+      summary: News List
+      operationId: everythingGet
+      parameters:
+      - name: count
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: rows
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: q
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleList'
+components:
+  schemas:
+    ArticleList:
+      required:
+        - "response"
+      properties:
+        response:
+          required:
+            - "numFound"
+            - "start"
+            - "maxScore"
+            - "docs"
+          properties:
+            numFound:
+              type: "number"
+            start:
+              type: "number"
+            maxScore:
+              type: "number"
+            docs:
+              type: "array"
+              items:
+                type: "object"
+                properties:
+                  id:
+                    type: "string"
+                  journal:
+                    type: "string"
+                  eissn:
+                    type: "string"
+                  publication_date:
+                    type: "string"
+                  article_type:
+                    type: "string"
+                  author_display:
+                    type: "array"
+                    items:
+                      type: "string"
+                  abstract:
+                    type: "array"
+                    items:
+                      type: "string"
+                  title_display:
+                    type: "string"
+                  score:
+                    type: "number"
+          type: "object"
