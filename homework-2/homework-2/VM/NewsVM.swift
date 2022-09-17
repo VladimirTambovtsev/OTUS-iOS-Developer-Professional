@@ -21,15 +21,13 @@ final class NewsViewModel: ObservableObject {
     }
     
     func fetchData(query: String) {
-        print("count: \(count)")
-        print("query: \(query)")
         ArticlesAPI.everythingGet(count: count, rows: 10, q: query) { data, error in
             let oldData = self.data
             self.data = oldData + data!.response.docs
             self.count += 10
             
             print(error ?? "")
-//            print(data ?? "")
+            print(data ?? "")
         }
     }
     

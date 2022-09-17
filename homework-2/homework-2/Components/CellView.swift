@@ -13,23 +13,34 @@ struct CellView: View {
     
     var data: ArticleListResponseDocsInner
     var isLast: Bool
-
+    
     var query: String
     
+    @State var isAnimateCell = false
+    
+    
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(data.articleType ?? "").fontWeight(.bold)
-            Text(data.titleDisplay ?? "")
-            if self.isLast {
-                Text("").onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        if self.listData.data.count != 50 {
-                            self.listData.fetchData(query: query)
+        if !isAnimateCell {
+            VStack(alignment: .leading, spacing: 12) {
+                Text(data.articleType ?? "").fontWeight(.bold)
+                Text(data.titleDisplay ?? "")
+                if self.isLast {
+                    Text("").onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            if self.listData.data.count != 50 {
+                                self.listData.fetchData(query: query)
+                            }
                         }
                     }
                 }
-            }
-        }.padding(.top, 10)
+            }.padding(.top, 10)
+                .onTapGesture {
+                    withAnimation {
+                        isAnimateCell.toggle()
+                    }
+                }.transition(.slide)
+        }
     }
 }
 

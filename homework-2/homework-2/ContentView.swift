@@ -11,8 +11,12 @@ import Network
 struct ContentView: View {    
     var body: some View {
         NavigationView {
+            VStack {
+                NavigationLink("Tap me", destination: Text("Subscreen"))
             Home()
                 .navigationBarTitle("Home")
+            //            RootView()
+            }
         }
     }
 }
@@ -66,5 +70,3 @@ struct Home: View {
         }
     }
 }
-
-
