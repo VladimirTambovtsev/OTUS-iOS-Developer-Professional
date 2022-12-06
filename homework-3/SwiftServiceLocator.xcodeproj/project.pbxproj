@@ -45,7 +45,6 @@
 		C76D579B25E7FDA90007F5BD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C76D579D25E7FE110007F5BD /* ServiceModuleImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModuleImpl.swift; sourceTree = "<group>"; };
 		C76D57A025E7FE1F0007F5BD /* ServiceModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModule.swift; sourceTree = "<group>"; };
-		C76D57A325E7FEF50007F5BD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +89,6 @@
 				C76D576825E7F92F0007F5BD /* LaunchScreen.storyboard */,
 				C76D576B25E7F92F0007F5BD /* Info.plist */,
 				C76D576525E7F92F0007F5BD /* Preview Content */,
-				C76D57A325E7FEF50007F5BD /* README.md */,
 			);
 			path = SwiftServiceLocator;
 			sourceTree = "<group>";
